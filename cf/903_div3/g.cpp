@@ -67,8 +67,10 @@ void solve() {
     return false;
   };
 
-  // Keep all indexes with found palindromes.
+  // Keep all indexes of found palindromes.
   set<int> palis;
+
+  // Checks if there is palindrome starting at index. If so, adds it to palis. If not, removes.
   auto update = [&](int index) {
     if (test(index)) palis.insert(index);
     else palis.erase(index);
