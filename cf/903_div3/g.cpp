@@ -6,7 +6,7 @@ using namespace std;
 
 constexpr int M = 'z' - 'a' + 1;
 
-// Fenwick tree.
+// Fenwick tree (rus: https://algorithmica.org/ru/fenwick).
 vector<int64_t> fwt;
 
 // Adds a to a single element. Keeps up others for computing prefix sum if needed.
@@ -91,7 +91,6 @@ void solve() {
       update(l - 1);
       update(l - 2);
       update(r - 1);
-      update(r - 2);
       update(r);
     }
     else {
