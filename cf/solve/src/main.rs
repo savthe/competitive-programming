@@ -1,5 +1,23 @@
-fn solve() {
+use std::collections::BTreeMap;
+use std::collections::BTreeSet;
 
+fn solve() {
+    let (n, m): (usize, usize) = inp::read2();
+    let mut s: Vec<u8> = inp::read_line().bytes().collect();
+    let mut ind = inp::read_vec::<usize>()
+        .iter()
+        .map(|x| x - 1)
+        .collect::<BTreeSet<usize>>();
+
+    let mut c: Vec<u8> = inp::read_line().bytes().collect();
+    c.sort_unstable();
+
+    for (j, &i) in ind.iter().enumerate() {
+        s[i] = c[j];
+    }
+
+    let s: String = s.into_iter().map(|c| c as char).collect();
+    println!("{s}");
 }
 
 fn main() {
@@ -16,7 +34,7 @@ mod inp {
     use std::str::FromStr;
     #[allow(dead_code)]
     pub fn read_vec_1<T: FromStr>(first: T) -> Vec<T> {
-        let mut v = read_line()
+        let mut v: Vec<T> = read_line()
             .split_whitespace()
             .map(|x| x.parse().ok().unwrap())
             .collect::<Vec<T>>();
@@ -36,7 +54,7 @@ mod inp {
     pub fn read_line() -> String {
         let mut input = String::new();
         io::stdin().read_line(&mut input).unwrap();
-        input
+        input.trim_end().to_string()
     }
 
     #[allow(dead_code)]
