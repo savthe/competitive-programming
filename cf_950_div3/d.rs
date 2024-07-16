@@ -10,23 +10,25 @@ fn solve() {
     let a = inp::read_matrix::<i32>(n);
     let b = inp::read_matrix::<i32>(n);
  
-    // For each element in first row we store its value and its column index.
+    // Для каждого элемента в первой строке храним пару (значение, номер столбца).
     let mut col_pivots: BTreeMap<us, us> = BTreeMap::new();
     for (i, x) in a.first().unwrap().iter().enumerate() {
         col_pivots.entry(*x as us).or_insert(i);
     }
     
-    // For each element in first column we store its value and its row index.
+    // Для каждого элемента в первом столбце храним пару (значение, номер строки).
     let mut row_pivots: BTreeMap<us, us> = BTreeMap::new();
     for (i, v) in a.iter().enumerate() {
         row_pivots.entry(*v.first().unwrap() as us).or_insert(i);
     }
  
-    // Mapping of rows and columns from a to b.
+    // Перестановка строк. row_map[i] = j  <=>  строка i в матрице a соответствет строке j в b.
     let mut row_map = vec![0; n];
+    // Перестановка столбцов.
     let mut col_map = vec![0; m];
 
-    // Loop through matrix b and search for pivot elements. If found, update maps.
+    // Ищем в матрице b элементы, по которым восстановим перестановку -- элементы из первой строки
+    // и первого столбца матрицы a.
     for (row_idx, v) in b.iter().enumerate() {
         for (col_idx, x) in v.iter().enumerate() {
             row_pivots.entry(*x as us).and_modify(|i| row_map[*i] = row_idx);
@@ -34,7 +36,7 @@ fn solve() {
         }
     }
  
-    // Test if row_map and col_map mapps rows and columns of a to b for each elemnt.
+    // Проверяем, что перестановки row_map и col_map переводят все элементы a в b.
     for (i, v) in a.iter().enumerate() {
         let ii = row_map[i];
         for (j, x) in v.iter().enumerate() {
