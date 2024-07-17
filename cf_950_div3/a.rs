@@ -8,7 +8,7 @@ fn solve() {
     let a = inp::read_bytes();
 
     let mut s = 0;
-    for c in b'A'..b'G' + 1 {
+    for c in b'A'..=b'G' {
         let count = a.iter().filter(|&x| *x == c).count();
 
         if count < m {
