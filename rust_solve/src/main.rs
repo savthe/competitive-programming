@@ -66,4 +66,14 @@ mod inp {
         let c: T3 = i.next().unwrap().parse().ok().unwrap();
         (a, b, c)
     }
+
+    pub fn read4<T1: FromStr, T2: FromStr, T3: FromStr, T4: FromStr>() -> (T1, T2, T3, T4) {
+        let input = read_line();
+        let mut i = input.split_whitespace();
+        let a: T1 = i.next().unwrap().parse().ok().unwrap();
+        let b: T2 = i.next().unwrap().parse().ok().unwrap();
+        let c: T3 = i.next().unwrap().parse().ok().unwrap();
+        let d: T4 = i.next().unwrap().parse().ok().unwrap();
+        (a, b, c, d)
+    }
 }
