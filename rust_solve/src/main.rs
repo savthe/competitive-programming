@@ -4,8 +4,7 @@ use std::collections::BTreeMap;
 use std::collections::HashMap;
 use std::collections::HashSet;
 
-fn solve() {
-}
+fn solve() {}
 
 fn main() {
     for _ in 0..inp::read1() {
@@ -51,20 +50,20 @@ mod inp {
         read_line().trim().parse().ok().unwrap()
     }
 
-    pub fn read2<T: FromStr>() -> (T, T) {
+    pub fn read2<T1: FromStr, T2: FromStr>() -> (T1, T2) {
         let input = read_line();
         let mut i = input.split_whitespace();
-        let a: T = i.next().unwrap().parse().ok().unwrap();
-        let b: T = i.next().unwrap().parse().ok().unwrap();
+        let a: T1 = i.next().unwrap().parse().ok().unwrap();
+        let b: T2 = i.next().unwrap().parse().ok().unwrap();
         (a, b)
     }
 
-    pub fn read3<T: FromStr>() -> (T, T, T) {
+    pub fn read3<T1: FromStr, T2: FromStr, T3: FromStr>() -> (T1, T2, T3) {
         let input = read_line();
         let mut i = input.split_whitespace();
-        let a: T = i.next().unwrap().parse().ok().unwrap();
-        let b: T = i.next().unwrap().parse().ok().unwrap();
-        let c: T = i.next().unwrap().parse().ok().unwrap();
+        let a: T1 = i.next().unwrap().parse().ok().unwrap();
+        let b: T2 = i.next().unwrap().parse().ok().unwrap();
+        let c: T3 = i.next().unwrap().parse().ok().unwrap();
         (a, b, c)
     }
 }
