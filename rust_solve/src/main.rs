@@ -1,9 +1,5 @@
 #![allow(unused_imports, dead_code, non_camel_case_types)]
 
-use std::collections::BTreeMap;
-use std::collections::HashMap;
-use std::collections::HashSet;
-
 fn solve() {}
 
 fn main() {
@@ -14,6 +10,10 @@ fn main() {
 
 /* Auxiliary stuff */
 type us = usize;
+
+use std::collections::BTreeMap;
+use std::collections::HashMap;
+use std::collections::HashSet;
 
 mod inp {
     use std::io;
